@@ -1,12 +1,13 @@
 import java.util.Arrays;
+import java.util.Random;
 public class GameDeck{
     private int[] deck;
     private int numOfCards;
 
-    public GameDeck(int numOfCards){
-        this.numOfCards = numOfCards;
+    public GameDeck(int cardNum){
+        numOfCards = cardNum;
         this.deck = createDeck(numOfCards);
-       System.out.println(Arrays.toString(deck));
+      
     }
 
     public int[] createDeck(int deckSize){
@@ -23,7 +24,20 @@ public class GameDeck{
         return newDeck;
     } 
 
-    public int drawCard(){
-        int randomNum = (Int)(Math.random() * numOfCards + 1);
+    public void shuffleDeck(){
+        Random num = new Random();
+        for (int i = deck.length - 1; i > 0; i--){
+            int j = num.nextInt(i + 1);
+
+            int temp = deck[i];
+            deck[i] = deck[j];
+            deck[j] = temp;
+        }
+    }
+
+    public void printDeck(){
+        for(int card : deck){
+            System.out.print(card + " ");
+        }
     }
 }
