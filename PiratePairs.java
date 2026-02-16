@@ -8,11 +8,9 @@ public class PiratePairs{
             player[i] = new Player(i + 1);
         }
         
-         
+        player[1].addCard(deck.drawCard());
         
-         deck.printDeck();
-         deck.shuffleDeck();
-         deck.printDeck();
+         
          
     }
  }
