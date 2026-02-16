@@ -1,4 +1,0 @@
-public class PlayerDeck{
-    int[] deck = new int[10];
-
-}

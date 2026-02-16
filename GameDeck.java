@@ -1,13 +1,14 @@
-import java.util.Arrays;
 import java.util.Random;
 public class GameDeck{
     private int[] deck;
     private int numOfCards;
+    private int top;
 
     public GameDeck(int cardNum){
         numOfCards = cardNum;
         this.deck = createDeck(numOfCards);
-      
+        shuffleDeck();
+        top = 0;
     }
 
     public int[] createDeck(int deckSize){
@@ -39,5 +40,9 @@ public class GameDeck{
         for(int card : deck){
             System.out.print(card + " ");
         }
+    }
+
+    public void dealCard(){
+        
     }
 }
