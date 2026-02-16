@@ -33,6 +33,24 @@ public void setOut(boolean value){
     out = value;
 }
 
+public void addCard(int card){
+    hand[handCount] = card;
+    handCount++;
+}
+
+public boolean hasCard(int card){
+    for (int i = 0; i < handCount; i++){
+        if (hand[i] == card){
+            return true;
+        }
+    }
+    return false;
+}
+
+public int handSize(){
+    return handCount;
+}
+
 
 
 
