@@ -8,7 +8,7 @@ public class GameDeck{
         numOfCards = cardNum;
         this.deck = createDeck(numOfCards);
         shuffleDeck();
-        top = 0;
+        top = 0; //top card on deck or index of deck array 
     }
 
     public int[] createDeck(int deckSize){
@@ -42,7 +42,15 @@ public class GameDeck{
         }
     }
 
-    public void dealCard(){
+    public int drawCard(){
         
+        if (top >= deck.length){
+            top = 0;
+            shuffleDeck();
+        }
+
+        int card = deck[top];
+        top++;
+        return card;
     }
 }
