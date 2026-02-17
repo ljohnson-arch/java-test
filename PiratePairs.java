@@ -18,8 +18,48 @@ public class PiratePairs{
 
             System.out.println("Player " + player[i].getId() + " draws " + card);
         }
+
+        int playersIn = numOfPlayers;
+        int turn = 0;
+
+        //while loop here
+            Player current = player[turn % numOfPlayers];
+
+            if(!current.isOut()){
+
+                System.out.println("Player " + current.getId() + "'s turn");
+
+                if(current.handSize() == 0){
+                     int card = deck.drawCard();
+                     System.out.println("Draws " + card);
+                     current.addCard(card);
+
+                } else {
+                    //strat if more than 3 cards takes lowest
+
+                    if (current.handSize() > 3){
+
+                        int lowest 
+                    }
+                }
+
+            }
         
-         
+        
+         public static int findLowest(Player[] player){
+
+            int lowest = 11;
+
+            for (Player p: player){
+                if(!p.isOut() && p.handSize() > 0){
+                    int min = p.lowestCard();
+                    if (min < lowest){
+                        lowest = min;
+                    }
+                }
+            }
+            return lowest;
+         }
          
     }
  }
