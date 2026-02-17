@@ -23,7 +23,8 @@ public class PiratePairs{
         int turn = 0;
 
         //while loop here
-            Player current = player[turn % numOfPlayers];
+        while(playersIn > 1){
+             Player current = player[turn % numOfPlayers];
 
             if(!current.isOut()){
 
@@ -45,14 +46,50 @@ public class PiratePairs{
                         current.addScore(lowest);
 
                         //discard hand
+                        discardHand(current, deck);
+                        current.clearHand();
                         
+                    } else{
+
+                        int card = deck.drawCard();
+                        System.out.println("Draws " + card);
+
+                        if (current.hasCard(card)){
+                            System.out.println("Pair! add " + card + " to score");
+                            current.addScore(card);
+
+                            //discard hand and pair card
+                            deck.addToDiscard(card);
+                            discardHand(current, deck);
+
+                            current.clearHand();
+                        } else{
+                            current.addCard(card);
+                        }
                     }
                 }
 
+                //check if player is out
+                if (current.getScore() > losingScore){
+                    System.out.println("Player " + current.getId() + " is OUT!");
+                    current.setOut(true);
+                    playersIn--;
+                }
             }
-     
-         
+            turn++; 
     }
+
+        
+           
+    
+    //declare winner
+    for(Player p : player){
+        if(!p.isOut()){
+            System.out.println("Playe " + p.getId() + " Wins!");
+        }
+    }
+}
+
 
      public static int findLowest(Player[] player){
 
