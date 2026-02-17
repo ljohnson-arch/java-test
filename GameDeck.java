@@ -1,14 +1,16 @@
 import java.util.Random;
 public class GameDeck{
-    private int[] deck;
-    private int numOfCards;
+    private int[] deck; 
+    private int[] discardPile;
     private int top;
+    private int discardCount;
 
-    public GameDeck(int cardNum){
-        numOfCards = cardNum;
-        this.deck = createDeck(numOfCards);
+    public GameDeck(int deckSize){
+        deck = createDeck(deckSize);
+        discardPile = new int[deckSize];
         shuffleDeck();
         top = 0; //top card on deck or index of deck array 
+        discardCount = 0;
     }
 
     public int[] createDeck(int deckSize){
@@ -52,5 +54,30 @@ public class GameDeck{
         int card = deck[top];
         top++;
         return card;
+    }
+
+    public void addToDiscard(int card){
+        discardPile[discardCount] = card;
+        discardCount++;
+    }
+
+    public void addMultipleToDiscard(int[] cards, int count){
+        for (int i = 0; i < count; i++){
+            discardPile[discardCount++] = cards[i];
+        }
+    }
+
+    public void reshuffleDiscards(){
+        if(discardCount == 0){
+            return;
+        }
+
+        for (int i = 0; i < discardCount; i++){
+            deck[i] = discardPile[i];
+        }
+
+        top = 0;
+        shuffleDeck();
+        discardCount = 0;
     }
 }

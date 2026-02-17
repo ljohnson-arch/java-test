@@ -50,6 +50,35 @@ public int handSize(){
     return handCount;
 }
 
+public void clearHand(){
+    handCount = 0;
+}
+
+public int lowestCard(){
+    if (handCount == 0){
+        return -1; //no cards in hand
+    }
+
+    int min = hand[0];
+
+    for (int i = 1; i < handCount; i++){
+        if (hand[i] < min){
+            min = hand[i];
+        }
+    }
+    return min;
+}
+
+public void printHand(){
+    System.out.println("Player " + id + " hand: ");
+    for(int i = 0; i < handCount; i++){
+        System.out.print(hand[i] + " ");
+    } 
+}
+
+public int[] getHand(){
+    return hand;
+}
 }
 
 
