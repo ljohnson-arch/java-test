@@ -12,7 +12,12 @@ public class PiratePairs{
         }
         
         //first round everyone player gets a card.
-        for (int i = 0;)
+        for (int i = 0; i < numOfPlayers; i++){
+            int card = deck.drawCard();
+            player[i].addCard(card);
+
+            System.out.println("Player " + player[i].getId() + " draws " + card);
+        }
         
          
          
