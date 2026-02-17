@@ -11,9 +11,6 @@ public class Player{
         this.score = 0;
         this.out = false;
     }
-}
-
-
 
 public int getId(){
     return id;
@@ -53,7 +50,7 @@ public int handSize(){
     return handCount;
 }
 
-
+}
 
 
 
