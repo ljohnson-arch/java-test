@@ -39,14 +39,22 @@ public class PiratePairs{
 
                     if (current.handSize() > 3){
 
-                        int lowest 
+                        int lowest = findLowest(player);
+                        System.out.println("Folds and takes " + lowest + " points");
+
+                        current.addScore(lowest);
+
+                        //discard hand
+                        
                     }
                 }
 
             }
-        
-        
-         public static int findLowest(Player[] player){
+     
+         
+    }
+
+     public static int findLowest(Player[] player){
 
             int lowest = 11;
 
@@ -60,6 +68,13 @@ public class PiratePairs{
             }
             return lowest;
          }
-         
+
+    public static void discardHand(Player player, GameDeck deck){
+
+        int[] hand = player.getHand();
+
+        for (int i = 0; i < player.handSize(); i++){
+            deck.addToDiscard(hand[i]);
+        }
     }
  }
